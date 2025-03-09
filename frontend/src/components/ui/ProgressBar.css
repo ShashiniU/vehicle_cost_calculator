@@ -1,0 +1,34 @@
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-bar.blue {
+  background-color: #3b82f6;
+}
+
+.progress-bar.green {
+  background-color: #10b981;
+}
+
+.progress-bar.purple {
+  background-color: #8b5cf6;
+}
+
+.progress-bar.orange {
+  background-color: #f59e0b;
+}
+
+.progress-bar.red {
+  background-color: #ef4444;
+}
+

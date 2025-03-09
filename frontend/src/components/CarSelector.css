@@ -1,0 +1,43 @@
+.car-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.car-selector h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.selector-container {
+  width: 100%;
+}
+
+.car-details {
+  background-color: #f8fafc;
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 8px;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  color: #64748b;
+}
+
+.detail-value {
+  font-weight: 500;
+}
+

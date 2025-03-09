@@ -1,0 +1,147 @@
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Three-column layout structure */
+.three-column-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.car-details-column,
+.usage-details-column,
+.cost-breakdown-column {
+  height: 100%;
+  flex: 1;
+  min-width: 0; /* Allows columns to shrink below content size if needed */
+}
+
+.cost-breakdown-column {
+  min-height: 400px;
+}
+
+.placeholder-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  color: #64748b;
+  text-align: center;
+  padding: 20px;
+}
+
+.comparison-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comparison-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.comparison-header-actions h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.comparison-table-wrapper {
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.comparison-table th {
+  background-color: #f8fafc;
+  font-weight: 700;
+}
+
+.comparison-table .car-name {
+  font-weight: 500;
+}
+
+.comparison-table .car-year {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.comparison-table .total-cost {
+  font-weight: 600;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: #e53e3e;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.remove-button:hover {
+  text-decoration: underline;
+}
+
+.login-prompt {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #f8fafc;
+  border-radius: 6px;
+  text-align: center;
+  color: #64748b;
+}
+
+.text-button {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+}
+
+/* Responsive layout */
+@media (min-width: 992px) {
+  .three-column-layout {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 991px) {
+  .three-column-layout {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 1200px) {
+  .three-column-layout {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .cost-breakdown-column {
+    grid-column: auto;
+  }
+}
+

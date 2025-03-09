@@ -1,0 +1,121 @@
+.results-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.summary-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.summary-card {
+  padding: 16px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary-card h3 {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.summary-card .card-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.summary-card .card-details {
+  font-size: 0.875rem;
+}
+
+.summary-card.blue {
+  background-color: #eff6ff;
+}
+
+.summary-card.blue h3 {
+  color: #1e40af;
+}
+
+.summary-card.blue .card-value {
+  color: #1d4ed8;
+}
+
+.summary-card.blue .card-details {
+  color: #3b82f6;
+}
+
+.summary-card.green {
+  background-color: #ecfdf5;
+}
+
+.summary-card.green h3 {
+  color: #065f46;
+}
+
+.summary-card.green .card-value {
+  color: #047857;
+}
+
+.summary-card.green .card-details {
+  color: #10b981;
+}
+
+.summary-card.purple {
+  background-color: #f5f3ff;
+}
+
+.summary-card.purple h3 {
+  color: #5b21b6;
+}
+
+.summary-card.purple .card-value {
+  color: #6d28d9;
+}
+
+.summary-card.purple .card-details {
+  color: #8b5cf6;
+}
+
+.insights-section {
+  background-color: #f8fafc;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.insights-section h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.insights-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 768px) {
+  .summary-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+

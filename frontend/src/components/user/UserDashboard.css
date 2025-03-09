@@ -1,0 +1,188 @@
+.dashboard-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.dashboard-header p {
+  color: #64748b;
+}
+
+.dashboard-tabs {
+  display: flex;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.dashboard-tab {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dashboard-tab:hover {
+  color: #3b82f6;
+}
+
+.dashboard-tab.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+}
+
+.dashboard-content {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+/* Profile Section */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: #1e293b;
+}
+
+.info-row {
+  display: flex;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.info-label {
+  width: 150px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.info-value {
+  flex: 1;
+  color: #1e293b;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Comparisons Section */
+.comparisons-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  color: #1e293b;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 0;
+  color: #64748b;
+}
+
+.comparisons-list {
+  display: grid;
+  gap: 16px;
+}
+
+.comparison-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f8fafc;
+  transition: transform 0.2s ease;
+}
+
+.comparison-card:hover {
+  transform: translateY(-2px);
+}
+
+.comparison-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.comparison-header h3 {
+  font-size: 1.25rem;
+  color: #1e293b;
+  margin: 0;
+}
+
+.comparison-date {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.comparison-cars {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.comparison-car-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+.car-name {
+  font-weight: 500;
+}
+
+.car-cost {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.comparison-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .dashboard-tab {
+    padding: 12px 16px;
+    font-size: 0.9375rem;
+  }
+
+  .dashboard-content {
+    padding: 16px;
+  }
+
+  .info-row {
+    flex-direction: column;
+  }
+
+  .info-label {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+}
+

@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
+import CarListingPage from "./components/CarListingPage"
 import CarCostCalculator from "./components/CarCostCalculator"
 import Login from "./components/auth/Login"
 import Register from "./components/auth/Register"
@@ -15,9 +16,21 @@ function App() {
       <Router>
         <div className="app">
           <Navbar />
+
           <div className="app-container">
+          <div className="calculator-container">
+      <div className="page-header">
+        <h1>Car Ownership Cost Calculator</h1>
+        <p>
+          Make informed decisions by understanding the true cost of owning your next vehicle. Calculate maintenance,
+          fuel, and total monthly expenses.
+        </p>
+      </div>
+</div>
             <Routes>
-              <Route path="/" element={<CarCostCalculator />} />
+              <Route path="/" element={<CarListingPage />} />
+              <Route path="/calculator" element={<CarCostCalculator />} />
+              <Route path="/calculator/:carId" element={<CarCostCalculator />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route

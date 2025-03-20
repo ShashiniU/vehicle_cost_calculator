@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./CarDetailsInput.css"
 
 function CarDetailsInput({ onSubmit, initialData = null }) {
@@ -19,6 +19,41 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
     },
   )
 
+  const [fieldsDisabled, setFieldsDisabled] = useState({
+    make: false,
+    model: false,
+    year: false,
+    engine: false,
+    transmission: false,
+    fuelEconomy: false,
+    msrp: false,
+    maintenanceCost: false,
+    insuranceEstimate: false, // Always editable
+    depreciationRate: false,
+  })
+
+  // Update car details when initialData changes
+  useEffect(() => {
+    if (initialData) {
+      setCarDetails(initialData)
+
+      // Disable all fields except insurance when a car is pre-selected
+      const newFieldsDisabled = {
+        make: true,
+        model: true,
+        year: true,
+        engine: true,
+        transmission: true,
+        fuelEconomy: true,
+        msrp: true,
+        maintenanceCost: true,
+        insuranceEstimate: false, // Always editable
+        depreciationRate: true,
+      }
+      setFieldsDisabled(newFieldsDisabled)
+    }
+  }, [initialData])
+
   const handleChange = (e) => {
     const { name, value } = e.target
     const numericFields = ["year", "fuelEconomy", "msrp", "maintenanceCost", "insuranceEstimate", "depreciationRate"]
@@ -32,10 +67,10 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // Generate a unique ID for the car
+    // Generate a unique ID for the car if it doesn't have one
     const carWithId = {
       ...carDetails,
-      id: Date.now().toString(),
+      id: carDetails.id || Date.now().toString(),
     }
 
     onSubmit(carWithId)
@@ -57,6 +92,7 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
               placeholder="e.g. Toyota"
               value={carDetails.make}
               onChange={handleChange}
+              disabled={fieldsDisabled.make}
               required
             />
           </div>
@@ -71,6 +107,7 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
               placeholder="e.g. Camry"
               value={carDetails.model}
               onChange={handleChange}
+              disabled={fieldsDisabled.model}
               required
             />
           </div>
@@ -88,6 +125,7 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
               max={new Date().getFullYear() + 1}
               value={carDetails.year}
               onChange={handleChange}
+              disabled={fieldsDisabled.year}
               required
             />
           </div>
@@ -102,6 +140,7 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
               placeholder="e.g. 2.5L 4-Cylinder"
               value={carDetails.engine}
               onChange={handleChange}
+              disabled={fieldsDisabled.engine}
             />
           </div>
         </div>
@@ -117,6 +156,7 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
               placeholder="e.g. Automatic"
               value={carDetails.transmission}
               onChange={handleChange}
+              disabled={fieldsDisabled.transmission}
             />
           </div>
 
@@ -131,6 +171,7 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
               max="200"
               value={carDetails.fuelEconomy}
               onChange={handleChange}
+              disabled={fieldsDisabled.fuelEconomy}
               required
             />
           </div>
@@ -148,6 +189,7 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
               step="100"
               value={carDetails.msrp}
               onChange={handleChange}
+              disabled={fieldsDisabled.msrp}
               required
             />
           </div>
@@ -163,6 +205,7 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
               step="100"
               value={carDetails.maintenanceCost}
               onChange={handleChange}
+              disabled={fieldsDisabled.maintenanceCost}
               required
             />
           </div>
@@ -170,12 +213,14 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
 
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="insuranceEstimate">Annual Insurance ($)</label>
+            <label htmlFor="insuranceEstimate" className="editable-field-label">
+              Annual Insurance ($)
+            </label>
             <input
               type="number"
               id="insuranceEstimate"
               name="insuranceEstimate"
-              className="form-control"
+              className="form-control editable-field"
               min="0"
               step="100"
               value={carDetails.insuranceEstimate}
@@ -196,6 +241,7 @@ function CarDetailsInput({ onSubmit, initialData = null }) {
               step="0.1"
               value={carDetails.depreciationRate}
               onChange={handleChange}
+              disabled={fieldsDisabled.depreciationRate}
               required
             />
           </div>

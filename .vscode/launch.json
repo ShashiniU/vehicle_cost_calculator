@@ -6,13 +6,12 @@
     "configurations": [
     
         {
-            "type": "node",
+            
+            "type": "msedge",
             "request": "launch",
-            "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}\\frontend\\src\\components\\user\\UserDashboard.js"
+            "name": "Launch Edge against localhost",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }

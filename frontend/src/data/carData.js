@@ -11,6 +11,7 @@ export const carData = [
     maintenanceCost: 4900,
     insuranceEstimate: 1200,
     depreciationRate: 10,
+    imageUrl: "/car-images/toyota-camry.jpg",
   },
   {
     id: "2",
@@ -24,6 +25,7 @@ export const carData = [
     maintenanceCost: 4700,
     insuranceEstimate: 1250,
     depreciationRate: 11,
+    imageUrl: "/car-images/honda-accord.jpg",
   },
   {
     id: "3",
@@ -37,6 +39,7 @@ export const carData = [
     maintenanceCost: 3200,
     insuranceEstimate: 1800,
     depreciationRate: 15,
+    imageUrl: "/car-images/tesla-model3.jpg",
   },
   {
     id: "4",
@@ -50,6 +53,7 @@ export const carData = [
     maintenanceCost: 5800,
     insuranceEstimate: 1400,
     depreciationRate: 9,
+    imageUrl: "/car-images/ford-f150.jpg",
   },
   {
     id: "5",
@@ -63,6 +67,7 @@ export const carData = [
     maintenanceCost: 7500,
     insuranceEstimate: 1900,
     depreciationRate: 18,
+    imageUrl: "/car-images/bmw-3series.jpg",
   },
   {
     id: "6",
@@ -76,6 +81,7 @@ export const carData = [
     maintenanceCost: 5100,
     insuranceEstimate: 1300,
     depreciationRate: 8,
+    imageUrl: "/car-images/toyota-rav4.jpg",
   },
   {
     id: "7",
@@ -89,6 +95,7 @@ export const carData = [
     maintenanceCost: 6200,
     insuranceEstimate: 1450,
     depreciationRate: 12,
+    imageUrl: "/car-images/chevrolet-silverado.jpg",
   },
   {
     id: "8",
@@ -102,6 +109,7 @@ export const carData = [
     maintenanceCost: 4800,
     insuranceEstimate: 1280,
     depreciationRate: 9,
+    imageUrl: "/car-images/honda-crv.jpg",
   },
   {
     id: "9",
@@ -115,6 +123,7 @@ export const carData = [
     maintenanceCost: 4200,
     insuranceEstimate: 1150,
     depreciationRate: 13,
+    imageUrl: "/car-images/hyundai-elantra.jpg",
   },
   {
     id: "10",
@@ -128,6 +137,7 @@ export const carData = [
     maintenanceCost: 5300,
     insuranceEstimate: 1320,
     depreciationRate: 10,
+    imageUrl: "/car-images/subaru-outback.jpg",
   },
 ]
 

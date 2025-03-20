@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useContext } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import CarDetailsInput from "./CarDetailsInput"
 import UsageInputs from "./UsageInputs"
 import CostBreakdown from "./CostBreakdown"
@@ -10,9 +10,11 @@ import Card from "./ui/Card"
 import Tabs from "./ui/Tabs"
 import { calculateCosts } from "../utils/costCalculations"
 import { AuthContext } from "../context/AuthContext"
+import { carData } from "../data/carData"
 import "./CarCostCalculator.css"
 
 function CarCostCalculator() {
+  const { carId } = useParams()
   const [selectedCar, setSelectedCar] = useState(null)
   const [usageDetails, setUsageDetails] = useState({
     monthlyMileage: 1000,
@@ -29,6 +31,16 @@ function CarCostCalculator() {
   const [comparedCars, setComparedCars] = useState([])
   const { currentUser, saveComparison } = useContext(AuthContext)
   const navigate = useNavigate()
+
+  // Load car data if carId is provided in URL
+  useEffect(() => {
+    if (carId) {
+      const car = carData.find((car) => car.id === carId)
+      if (car) {
+        setSelectedCar(car)
+      }
+    }
+  }, [carId])
 
   useEffect(() => {
     if (selectedCar) {
@@ -86,13 +98,7 @@ function CarCostCalculator() {
 
   return (
     <div className="calculator-container">
-      <div className="page-header">
-        <h1>Car Ownership Cost Calculator</h1>
-        <p>
-          Make informed decisions by understanding the true cost of owning your next vehicle. Calculate maintenance,
-          fuel, and total monthly expenses.
-        </p>
-      </div>
+     
 
       <div className="content-card">
         <Tabs

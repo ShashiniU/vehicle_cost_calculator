@@ -1,12 +1,12 @@
 "use client"
 
-import { useContext, useState } from "react"
+import React, { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
 import "./UserDashboard.css"
 
 function UserDashboard({ activeTab = "profile" }) {
-  const { currentUser, deleteComparison } = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext)
   const [currentTab, setCurrentTab] = useState(activeTab)
   const [comparedCars, setComparedCars] = useState([])
 

@@ -19,8 +19,7 @@ function CarListingPage() {
   }
 
   return (
-    <div className="car-listing-container">
-      
+    <div className="car-listing-container">      
 
       <div className="search-container">
         <input

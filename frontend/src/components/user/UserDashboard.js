@@ -5,10 +5,12 @@ import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
 import "./UserDashboard.css"
 
+
 function UserDashboard({ activeTab = "profile" }) {
   const { currentUser } = useContext(AuthContext)
   const [currentTab, setCurrentTab] = useState(activeTab)
   const [comparedCars, setComparedCars] = useState([])
+ 
 
   // const handleDeleteComparison = (id) => {
   //   if (window.confirm("Are you sure you want to delete this comparison?")) {
@@ -21,6 +23,7 @@ function UserDashboard({ activeTab = "profile" }) {
       // setActiveTab("calculator")
     }
   }
+
 
   return (
     <div className="dashboard-container">
@@ -71,6 +74,7 @@ function UserDashboard({ activeTab = "profile" }) {
                 <Link to="/edit-profile" className="btn btn-primary">
                   Edit Profile
                 </Link>
+                
               </div>
             </div>
           </div>

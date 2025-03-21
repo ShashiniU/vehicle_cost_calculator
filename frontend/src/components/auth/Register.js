@@ -23,7 +23,7 @@ function Register() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
     setError("")
 
@@ -43,8 +43,31 @@ function Register() {
       return
     }
 
-    // In a real app, you would send this data to a backend
-    // For this demo, we'll simulate a successful registration
+    e.preventDefault();
+    try {
+                    
+        const response = await 
+        fetch( 
+             "http://localhost:5000/api/auth/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          })
+          
+    
+          const data =await response.json()
+          if (!response.ok) {
+            throw new Error(data.msg || "Registration failed");
+          }
+          
+          localStorage.setItem("costuser", JSON.stringify(data.user)); // Save token
+          // onLogin(data.user); 
+          handleLogin();
+    } catch (error) {
+      setError(error.message || "Something went wrong!");
+    }
     const success = register({
       name: formData.name,
       email: formData.email,
@@ -56,6 +79,12 @@ function Register() {
       setError("Registration failed")
     }
   }
+  
+  function handleLogin() {
+    JSON.parse(localStorage.getItem("user")); 
+    
+}
+
 
   return (
     <div className="auth-container">

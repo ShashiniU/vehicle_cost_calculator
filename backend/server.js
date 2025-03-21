@@ -29,15 +29,13 @@ mongoose
   .catch((err) => console.error("Error connecting to MongoDB:", err))
 
 
-
-
 // Routes
 const authRoutes = require("./routes/auth")
-const orderRoutes = require('./routes/orders'); 
+const comparisonRoutes = require("./routes/comparisons")
 
 
 app.use("/api/auth", authRoutes)
-app.use("/api/orders", orderRoutes)
+app.use("/api/comparisons", comparisonRoutes)
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 

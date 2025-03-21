@@ -33,12 +33,10 @@ mongoose
 
 // Routes
 const authRoutes = require("./routes/auth")
-const carRoutes = require("./routes/cars")
 const orderRoutes = require('./routes/orders'); 
 
 
 app.use("/api/auth", authRoutes)
-app.use("/api/cars", carRoutes)
 app.use("/api/orders", orderRoutes)
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

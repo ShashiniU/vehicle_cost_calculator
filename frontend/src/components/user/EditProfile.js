@@ -4,8 +4,21 @@ import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
 import "./EditProfile.css"
+import axios from "axios"
 
 function EditProfile() {
+  const savedUser = JSON.parse(localStorage.getItem("costuser"));
+    const [user] = useState(savedUser);
+    const updateUserDetails = async () => {
+      try {
+        await axios.put(`http://localhost:5000/api/auth/users/${user?._id}`, currentUser);
+        alert("User details updated!");
+      } catch (error) {
+        console.error("Error updating user details:", error);
+        alert("Error updating profile");
+      }
+    };
+  
   const { currentUser, updateUser } = useContext(AuthContext)
   const [formData, setFormData] = useState({
     name: currentUser.name || "",
@@ -91,7 +104,7 @@ function EditProfile() {
             <button type="button" className="btn btn-secondary" onClick={() => navigate("/dashboard")}>
               Cancel
             </button>
-            <button type="submit" className="btn btn-primary">
+            <button onClick={updateUserDetails} type="submit" className="btn btn-primary">
               Save Changes
             </button>
           </div>

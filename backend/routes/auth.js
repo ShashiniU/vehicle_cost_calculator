@@ -9,12 +9,11 @@ router.post("/register", async (req, res) => {
   
   try {
   
-    const { name, email, password, role } = req.body
+    const { name, email, password } = req.body
 
     // Check if user already exists
     let user = await User.findOne({ email })
     
-console.log("findOne:", user)
     if (user) {
       return res.status(400).json({ msg: "User already exists" })
     }
@@ -25,7 +24,7 @@ console.log("findOne:", user)
       name,
       email,
       password,
-      role,  // or other roles ('owner', 'admin')
+
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -115,6 +114,25 @@ router.get('/user/:id', async (req, res) => {
   }
 });
 
+// Update user
+router.put('/users/:id', async (req, res) => {
+  try {  
 
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    
+    res.json(updatedUser);
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
 module.exports = router
 

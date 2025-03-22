@@ -6,6 +6,9 @@ import { AuthContext } from "../../context/AuthContext"
 import "./Auth.css"
 
 function Login() {
+  const savedUser = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(savedUser);
+  const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -21,21 +24,48 @@ function Login() {
     })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setError("")
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setMessage("");
 
     // Simple validation
     if (!formData.email || !formData.password) {
-      setError("Please fill in all fields")
-      return
+        setError("Please fill in all fields");
+        return;
     }
 
-    // In a real app, you would send this data to a backend
-    // For this demo, we'll simulate a successful login
+    try {
+        const response = await fetch("http://localhost:5000/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
+
+        // Check if the response status is OK
+        if (!response.ok) {
+            throw new Error("Invalid credentials or server error");
+        }
+
+        else{const data = await response.json();
+
+          // Save user data to localStorage
+          localStorage.setItem("costuser", JSON.stringify(data.user));
+  
+          setMessage("Login successful!");
+          handleLogin();}
+    } catch (error) {
+        setError(error.message || "Login failed!");
+    }
+};
+
+  function handleLogin() {
+    const userData = JSON.parse(localStorage.getItem("costuser"));  
+    setUser(userData);  
     const success = login({
-      email: formData.email,
-      name: "Demo User", // In a real app, this would come from the backend
+     
     })
 
     if (success) {
@@ -43,8 +73,7 @@ function Login() {
     } else {
       setError("Invalid credentials")
     }
-  }
-
+}
   return (
     <div className="auth-container">
       <div className="auth-card">

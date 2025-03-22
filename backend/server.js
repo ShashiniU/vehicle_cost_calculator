@@ -36,6 +36,7 @@ const comparisonRoutes = require("./routes/comparisons")
 
 app.use("/api/auth", authRoutes)
 app.use("/api/comparisons", comparisonRoutes)
+
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 

@@ -39,10 +39,7 @@ const ComparisonSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    name: {
-      type: String,
-      default: "My Comparison",
-    },
+   
     date: {
       type: Date,
       default: Date.now,

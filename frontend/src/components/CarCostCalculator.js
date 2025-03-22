@@ -12,9 +12,14 @@ import { calculateCosts } from "../utils/costCalculations"
 import { AuthContext } from "../context/AuthContext"
 import { carData } from "../data/carData"
 import "./CarCostCalculator.css"
+import axios from "axios"
 
 function CarCostCalculator() {
   const { carId } = useParams()
+  const [ message, setMessage] = useState("");
+  // const savedUser = JSON.parse(localStorage.getItem("user"));
+  // const [user] = useState(savedUser);
+
   const [selectedCar, setSelectedCar] = useState(null)
   const [usageDetails, setUsageDetails] = useState({
     monthlyMileage: 1000,
@@ -77,24 +82,52 @@ function CarCostCalculator() {
     }
   }
 
-  const handleSaveComparison = () => {
-    if (!currentUser) {
-      // Redirect to login if not authenticated
-      navigate("/login")
-      return
-    }
+  
 
-    if (comparedCars.length > 0) {
-      const success = saveComparison(comparedCars)
-      if (success) {
-        alert("Comparison saved successfully!")
-        // Optionally redirect to the comparisons page
-        navigate("/comparisons")
-      } else {
-        alert("Failed to save comparison")
-      }
+  const handleSaveComparison = async () => {
+    if (!currentUser) {
+      navigate("/login");
+      return;
     }
-  }
+  
+    if (!comparedCars || comparedCars.length === 0) {
+      alert("Please select at least one car for comparison.");
+      return;
+    }
+  
+    try {
+      // const response = await axios.post(
+      //   "http://localhost:5000/api/comparisons/",
+      //   {
+          
+      //     cars: comparedCars,
+      //     userid: currentUser.userid
+      //   },
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${currentUser.token}`, // Ensure authentication token is sent
+      //     },
+      //   }
+      // );
+     
+      const success = await saveComparison( {
+          
+        cars: comparedCars,
+        userid: currentUser._id
+      }); // Save comparison to state
+      if (success) {
+        alert("Comparison saved successfully!");
+        navigate("/comparisons");  // Navigate after successful save
+    }
+     
+      return true;
+    } catch (err) {
+      console.error("Error saving comparison:", err);
+      setMessage(err.response?.data?.message || "Failed to save comparison");
+      return false;
+    }
+  };
+  
 
   return (
     <div className="calculator-container">
